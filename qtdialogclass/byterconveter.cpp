@@ -113,7 +113,7 @@ void byterconveter::numberClicked()
     
     QString digit = button->text();
     
-    if (currentNumber == "0") {
+    if (currentNumber == "0" || currentNumber.isEmpty()) {
         currentNumber = digit;
     } else {
         currentNumber += digit;
@@ -196,12 +196,14 @@ void byterconveter::calculate()
 void byterconveter::hexModeClicked()
 {
     isHexMode = true;
-    if (!currentNumber.isEmpty()) {
+    if (!currentNumber.isEmpty() && currentNumber != "0") {
         bool ok;
         int value = currentNumber.toInt(&ok);
         if (ok) {
             display->setText(QString::number(value, 16).toUpper());
         }
+    } else {
+        display->setText("0");
     }
 }
 
@@ -210,6 +212,8 @@ void byterconveter::decModeClicked()
     isHexMode = false;
     if (!currentNumber.isEmpty()) {
         display->setText(currentNumber);
+    } else {
+        display->setText("0");
     }
 }
 
