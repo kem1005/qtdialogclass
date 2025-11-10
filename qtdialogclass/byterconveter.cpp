@@ -5,7 +5,7 @@
 #include<QGridLayout>
 
 byterconveter::byterconveter(QWidget *parent)
-    : QDialog(parent), storedValue(0), isHexMode(false)
+    : QDialog(parent), currentNumber("0"), storedValue(0), isHexMode(false)
 {
     QVBoxLayout* mainLayout = new QVBoxLayout(this);
     
